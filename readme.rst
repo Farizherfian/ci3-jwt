@@ -61,8 +61,11 @@ POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://loc
 | Headers      | Body       |
 +==============+============+
 | Authorization| id_kategori|
++--------------+------------+
 |              | nama       |
++--------------+------------+
 |              | harga      |
++--------------+------------+
 |              | stok       |
 +--------------+------------+
 
@@ -72,8 +75,11 @@ POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://lo
 | Headers      | Body       |
 +==============+============+
 | Authorization| id_kategori|
++--------------+------------+
 |              | nama       |
++--------------+------------+
 |              | harga      |
++--------------+------------+
 |              | stok       |
 +--------------+------------+
 
