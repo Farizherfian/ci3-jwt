@@ -1,3 +1,90 @@
+## CodeIgniter 3 Dan JWT
+=========================
+
+**Fitur**
+---------
+
+1. Register/Login/Logout
+2. JWT token
+3. CRUD 
+
+**Gunakan di Postman**
+----------------------
+
+#### Register & Login
+
+POST : `http://localhost:8080/authentication/index.php/auth/register <http://localhost:8080/authentication/index.php/auth/register>`_
+
++-----------------+
+| Body            |
++=================+
+| email           |
++-----------------+
+| username        |
++-----------------+
+| password        |
++-----------------+
+| confirm_password|
++-----------------+
+
+POST : `http://localhost:8080/authentication/index.php/auth/login <http://localhost:8080/authentication/index.php/auth/login>`_
+
++---------+
+| Body    |
++=========+
+| email   |
++---------+
+| password|
++---------+
+
+POST : `http://localhost:8080/authentication/index.php/auth/logout <http://localhost:8080/authentication/index.php/auth/logout>`_
+
++-------------+---------+
+| Headers     | Body    |
++=============+=========+
+| Authorization|         |
++-------------+---------+
+
+### CRUD Barang
+
+GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:8080/authentication/index.php/barang/>`_
+
++-------------+---------+
+| Headers     | Body    |
++=============+=========+
+| Authorization|         |
++-------------+---------+
+
+POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://localhost:8080/authentication/index.php/barang/tambah>`_
+
++-------------+------------+
+| Headers     | Body       |
++=============+============+
+| Authorization| id_kategori|
+|             | nama       |
+|             | harga      |
+|             | stok       |
++-------------+------------+
+
+POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
+
++-------------+------------+
+| Headers     | Body       |
++=============+============+
+| Authorization| id_kategori|
+|             | nama       |
+|             | harga      |
+|             | stok       |
++-------------+------------+
+
+DELETE : `http://localhost:8080/authentication/index.php/barang/hapus:id <http://localhost:8080/authentication/index.php/barang/hapus:id>`_
+
++-------------+---------+
+| Headers     | Body    |
++=============+=========+
+| Authorization|         |
++-------------+---------+
+
 ###################
 What is CodeIgniter
 ###################
