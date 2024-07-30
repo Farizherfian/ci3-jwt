@@ -39,51 +39,51 @@ POST : `http://localhost:8080/authentication/index.php/auth/login <http://localh
 
 POST : `http://localhost:8080/authentication/index.php/auth/logout <http://localhost:8080/authentication/index.php/auth/logout>`_
 
-+-------------+---------+
-| Headers     | Body    |
-+=============+=========+
-| Authorization|         |
-+-------------+---------+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
 
 ### CRUD Barang
 
 GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:8080/authentication/index.php/barang/>`_
 
-+-------------+---------+
-| Headers     | Body    |
-+=============+=========+
-| Authorization|         |
-+-------------+---------+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
 
 POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://localhost:8080/authentication/index.php/barang/tambah>`_
 
-+-------------+------------+
-| Headers     | Body       |
-+=============+============+
++--------------+------------+
+| Headers      | Body       |
++==============+============+
 | Authorization| id_kategori|
-|             | nama       |
-|             | harga      |
-|             | stok       |
-+-------------+------------+
+|              | nama       |
+|              | harga      |
+|              | stok       |
++--------------+------------+
 
 POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
 
-+-------------+------------+
-| Headers     | Body       |
-+=============+============+
++--------------+------------+
+| Headers      | Body       |
++==============+============+
 | Authorization| id_kategori|
-|             | nama       |
-|             | harga      |
-|             | stok       |
-+-------------+------------+
+|              | nama       |
+|              | harga      |
+|              | stok       |
++--------------+------------+
 
 DELETE : `http://localhost:8080/authentication/index.php/barang/hapus:id <http://localhost:8080/authentication/index.php/barang/hapus:id>`_
 
-+-------------+---------+
-| Headers     | Body    |
-+=============+=========+
-| Authorization|         |
-+-------------+---------+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
 
 ###################
 What is CodeIgniter
