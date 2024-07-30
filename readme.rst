@@ -1,4 +1,4 @@
-## CodeIgniter 3 Dan JWT
+CodeIgniter 3 Dan JWT
 =========================
 
 **Fitur**
@@ -11,7 +11,7 @@
 **Gunakan di Postman**
 ----------------------
 
-#### Register & Login
+**Register**
 
 POST : `http://localhost:8080/authentication/index.php/auth/register <http://localhost:8080/authentication/index.php/auth/register>`_
 
@@ -27,6 +27,8 @@ POST : `http://localhost:8080/authentication/index.php/auth/register <http://loc
 | confirm_password|
 +-----------------+
 
+**Login**
+
 POST : `http://localhost:8080/authentication/index.php/auth/login <http://localhost:8080/authentication/index.php/auth/login>`_
 
 +---------+
@@ -37,6 +39,8 @@ POST : `http://localhost:8080/authentication/index.php/auth/login <http://localh
 | password|
 +---------+
 
+**Logout**
+
 POST : `http://localhost:8080/authentication/index.php/auth/logout <http://localhost:8080/authentication/index.php/auth/logout>`_
 
 +--------------+------+
@@ -45,7 +49,10 @@ POST : `http://localhost:8080/authentication/index.php/auth/logout <http://local
 | Authorization|      |
 +--------------+------+
 
-### CRUD Barang
+**CRUD BARANG**
+---------------
+
+**List**
 
 GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:8080/authentication/index.php/barang/>`_
 
@@ -54,6 +61,8 @@ GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:
 +==============+======+
 | Authorization|      |
 +--------------+------+
+
+**Tambah**
 
 POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://localhost:8080/authentication/index.php/barang/tambah>`_
 
@@ -69,6 +78,8 @@ POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://loc
 |              | stok       |
 +--------------+------------+
 
+**Ubah**
+
 POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
 
 +--------------+------------+
@@ -83,6 +94,8 @@ POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://lo
 |              | stok       |
 +--------------+------------+
 
+**Hapus**
+
 DELETE : `http://localhost:8080/authentication/index.php/barang/hapus:id <http://localhost:8080/authentication/index.php/barang/hapus:id>`_
 
 +--------------+------+
@@ -91,9 +104,9 @@ DELETE : `http://localhost:8080/authentication/index.php/barang/hapus:id <http:/
 | Authorization|      |
 +--------------+------+
 
-###################
+===================
 What is CodeIgniter
-###################
+===================
 
 CodeIgniter is an Application Development Framework - a toolkit - for people
 who build web sites using PHP. Its goal is to enable you to develop projects
