@@ -15,29 +15,29 @@ CodeIgniter 3 Dan JWT
 
 POST : `http://localhost:8080/authentication/index.php/auth/register <http://localhost:8080/authentication/index.php/auth/register>`_
 
-+-----------------+
-| Body            |
-+=================+
-| email           |
-+-----------------+
-| username        |
-+-----------------+
-| password        |
-+-----------------+
-| confirm_password|
-+-----------------+
++-----------------+----------------+
+| Body            | value          |
++=================+================+
+| email           |test@gmail.com  |
++-----------------+----------------+
+| username        |test123         |
++-----------------+----------------+
+| password        |12345           |
++-----------------+----------------+
+| confirm_password|12345           |
++-----------------+----------------+
 
 **Login**
 
 POST : `http://localhost:8080/authentication/index.php/auth/login <http://localhost:8080/authentication/index.php/auth/login>`_
 
-+---------+
-| Body    |
-+=========+
-| email   |
-+---------+
-| password|
-+---------+
++-----------------+----------------+
+| Body            | value          |
++=================+================+
+| email           |test@gmail.com  |
++-----------------+----------------+
+| password        |12345           |
++-----------------+----------------+
 
 **Logout**
 
@@ -66,33 +66,33 @@ GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:
 
 POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://localhost:8080/authentication/index.php/barang/tambah>`_
 
-+--------------+------------+
-| Headers      | Body       |
-+==============+============+
-| Authorization| id_kategori|
-+--------------+------------+
-|              | nama       |
-+--------------+------------+
-|              | harga      |
-+--------------+------------+
-|              | stok       |
-+--------------+------------+
++--------------+------------+----------+
+| Headers      | Body       |value     |
++==============+============+==========+
+| Authorization| id_kategori|1         |
++--------------+------------+----------+
+|              | nama       |sepatu    |
++--------------+------------+----------+
+|              | harga      |50000     |
++--------------+------------+----------+
+|              | stok       |30        |
++--------------+------------+----------+
 
 **Ubah**
 
 POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
 
-+--------------+------------+
-| Headers      | Body       |
-+==============+============+
-| Authorization| id_kategori|
-+--------------+------------+
-|              | nama       |
-+--------------+------------+
-|              | harga      |
-+--------------+------------+
-|              | stok       |
-+--------------+------------+
++--------------+------------+----------+
+| Headers      | Body       |value     |
++==============+============+==========+
+| Authorization| id_kategori|1         |
++--------------+------------+----------+
+|              | nama       |sendal    |
++--------------+------------+----------+
+|              | harga      |25000     |
++--------------+------------+----------+
+|              | stok       |60        |
++--------------+------------+----------+
 
 **Hapus**
 
