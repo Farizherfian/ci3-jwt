@@ -11,6 +11,7 @@ class Barang extends CI_Controller
         parent::__construct();
         $this->load->model('Barang_model');
         $this->load->model('Kategori_model');
+        $this->load->model('Supplier_model');
     }
     private function verify_token()
     {
@@ -52,6 +53,7 @@ class Barang extends CI_Controller
     	}
 
     	$data = array(
+    		'id_supplier' => $this->input->post('id_supplier'),
         	'id_kategori' => $this->input->post('id_kategori'),
         	'nama' => $this->input->post('nama'),
         	'harga' => $this->input->post('harga'),
@@ -59,6 +61,7 @@ class Barang extends CI_Controller
     	);
 
     	$this->form_validation->set_data($data);
+    	$this->form_validation->set_rules('id_supplier', 'Supplier', 'required|callback_cek_id_supplier');
    	 	$this->form_validation->set_rules('id_kategori', 'Kategori', 'required|callback_cek_id_kategori');
    	 	$this->form_validation->set_rules('nama', 'Nama', 'required');
     	$this->form_validation->set_rules('harga', 'Harga', 'required|greater_than[0]');
@@ -78,18 +81,18 @@ class Barang extends CI_Controller
     	}
 
     	$data = array(
+        	'id_supplier' => $this->input->post('id_supplier'),
         	'id_kategori' => $this->input->post('id_kategori'),
         	'nama' => $this->input->post('nama'),
         	'harga' => $this->input->post('harga'),
-        	'stok' => $this->input->post('stok')
     	);
 
 
     	$this->form_validation->set_data($data);
+    	$this->form_validation->set_rules('id_supplier', 'Supplier', 'required|callback_cek_id_supplier');
     	$this->form_validation->set_rules('id_kategori', 'Kategori Barang', 'required|callback_cek_id_kategori');
     	$this->form_validation->set_rules('nama', 'Nama', 'required');
     	$this->form_validation->set_rules('harga', 'Harga', 'required|greater_than[0]');
-    	$this->form_validation->set_rules('stok', 'Stok', 'required|greater_than_equal_to[0]');
 
     	if ($this->form_validation->run() == FALSE) {
         return $this->sendJson(array("status" => false, "message" => validation_errors()));
@@ -116,6 +119,15 @@ class Barang extends CI_Controller
     public function cek_id_kategori($id_kategori)
     {
     	if ($this->Kategori_model->cek_kategori($id_kategori)) {
+            return true;
+        } else {
+            $this->form_validation->set_message('cek_id_kategori', 'The {field} does not exist.');
+            return false;
+        }
+    }
+    public function cek_id_supplier($id_supplier)
+    {
+    	if ($this->Supplier_model->cek_supplier($id_supplier)) {
             return true;
         } else {
             $this->form_validation->set_message('cek_id_kategori', 'The {field} does not exist.');
