@@ -1,6 +1,112 @@
-###################
+CodeIgniter 3 Dan JWT
+=========================
+
+**Fitur**
+---------
+
+1. Register/Login/Logout
+2. JWT token
+3. CRUD 
+
+**Gunakan di Postman**
+----------------------
+
+**Register**
+
+POST : `http://localhost:8080/authentication/index.php/auth/register <http://localhost:8080/authentication/index.php/auth/register>`_
+
++-----------------+----------------+
+| Body            | value          |
++=================+================+
+| email           |test@gmail.com  |
++-----------------+----------------+
+| username        |test123         |
++-----------------+----------------+
+| password        |12345           |
++-----------------+----------------+
+| confirm_password|12345           |
++-----------------+----------------+
+
+**Login**
+
+POST : `http://localhost:8080/authentication/index.php/auth/login <http://localhost:8080/authentication/index.php/auth/login>`_
+
++-----------------+----------------+
+| Body            | value          |
++=================+================+
+| email           |test@gmail.com  |
++-----------------+----------------+
+| password        |12345           |
++-----------------+----------------+
+
+**Logout**
+
+POST : `http://localhost:8080/authentication/index.php/auth/logout <http://localhost:8080/authentication/index.php/auth/logout>`_
+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
+
+**CRUD BARANG**
+---------------
+
+**List**
+
+GET : `http://localhost:8080/authentication/index.php/barang/ <http://localhost:8080/authentication/index.php/barang/>`_
+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
+
+**Tambah**
+
+POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://localhost:8080/authentication/index.php/barang/tambah>`_
+
++--------------+------------+----------+
+| Headers      | Body       |value     |
++==============+============+==========+
+| Authorization| id_kategori|1         |
++--------------+------------+----------+
+|              | nama       |sepatu    |
++--------------+------------+----------+
+|              | harga      |50000     |
++--------------+------------+----------+
+|              | stok       |30        |
++--------------+------------+----------+
+
+**Ubah**
+
+POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
+
++--------------+------------+----------+
+| Headers      | Body       |value     |
++==============+============+==========+
+| Authorization| id_kategori|1         |
++--------------+------------+----------+
+|              | nama       |sendal    |
++--------------+------------+----------+
+|              | harga      |25000     |
++--------------+------------+----------+
+|              | stok       |60        |
++--------------+------------+----------+
+
+**Hapus**
+
+DELETE : `http://localhost:8080/authentication/index.php/barang/hapus:id <http://localhost:8080/authentication/index.php/barang/hapus:id>`_
+
++--------------+------+
+| Headers      | Body |
++==============+======+
+| Authorization|      |
++--------------+------+
+
+===================
 What is CodeIgniter
-###################
+===================
 
 CodeIgniter is an Application Development Framework - a toolkit - for people
 who build web sites using PHP. Its goal is to enable you to develop projects
