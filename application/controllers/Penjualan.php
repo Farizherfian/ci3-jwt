@@ -10,57 +10,22 @@ class Penjualan extends CI_Controller
         $this->load->model('Penjualan_model');
         $this->load->model('Barang_model');
     }
+    public function index()
+    {
+        if (!$this->verify_token()) {
+            return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
+        }
 
-// public function tambah() {
-//     if (!$this->verify_token()) {
-//         return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
-//     }
+        $penjualan = $this->db->get('penjualan')->result();
+        return $this->sendJson(array("status" => true, "data" => $penjualan));
+    }
 
-    
-//     $input_data = json_decode(file_get_contents('php://input'), true);
-
-//     if (!isset($input_data['detail']) || !is_array($input_data['detail'])) {
-//         return $this->sendJson(array("status" => false, "message" => "Data detail tidak valid"));
-//     }
-
-//     $data_detail = $input_data['detail'];
-
-//     $data_penjualan = array(
-//         'tanggal' => date('Y-m-d H:i:s'),
-//         'total_harga' => 0
-//     );
-
-//     // Hitung total harga
-//     $total_harga = 0;
-//     foreach ($data_detail as &$detail) {
-//         $barang = $this->db->get_where('barang', array('id_barang' => $detail['id_barang']))->row_array();
-//         if ($barang) {
-//             $detail['harga'] = $barang['harga'];
-//             $total_harga += $barang['harga'] * $detail['jumlah'];
-//             $this->db->set('stok', 'stok - ' . (int)$detail['jumlah'], FALSE);
-//             $this->db->where('id_barang', $detail['id_barang']);
-//             $this->db->update('barang');
-//         } else {
-//             return $this->sendJson(array("status" => false, "message" => "Barang dengan ID " . $detail['id_barang'] . " tidak ditemukan"));
-//         }
-//     }
-
-//     $data_penjualan['total_harga'] = $total_harga;
-
-//     $id_penjualan = $this->Penjualan_model->tambah_penjualan($data_penjualan, $data_detail);
-
-//     if ($id_penjualan) {
-//         return $this->sendJson(array("status" => true, "message" => "Penjualan berhasil ditambahkan", "total_harga" => $total_harga, "id_penjualan" => $id_penjualan));
-//     } else {
-//         return $this->sendJson(array("status" => false, "message" => "Penjualan gagal ditambahkan"));
-//     }
-// }
     public function tambah()
     {
         if (!$this->verify_token()) {
             return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
         }
-        
+
         $input = json_decode($this->input->raw_input_stream, true);
         $penjualan = [
             'tanggal' => date('Y-m-d H:i:s'),
@@ -72,6 +37,9 @@ class Penjualan extends CI_Controller
         foreach ($input['items'] as $item) {
             $barang = $this->Barang_model->get_barang_by_id($item['id_barang']);
             if ($barang) {
+                if ($barang['stok'] < $item['jumlah']) {
+                    return $this->sendJson(array("status" => false, "message" => "Stok barang dengan ID " . $item['id_barang'] . " tidak mencukupi"));
+                }
                 $subtotal = $barang['harga'] * $item['jumlah'];
                 $detail = [
                     'id_penjualan' => $penjualan_id,
@@ -83,6 +51,8 @@ class Penjualan extends CI_Controller
                 $this->Penjualan_model->tambah_detail_penjualan($detail);
                 $this->Barang_model->update_stok($item['id_barang'], -$item['jumlah']);
                 $total += $subtotal;
+            }else {
+                 return $this->sendJson(array("status" => false, "message" => "Barang dengan ID " . $item['id_barang'] . " tidak ditemukan"));
             }
         }
 
@@ -96,6 +66,32 @@ class Penjualan extends CI_Controller
         return $this->sendJson($response);
     }
 
+    public function detail($id_penjualan)
+    {
+        if (!$this->verify_token()) {
+            return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
+        }
+
+        $penjualan_detail = $this->Penjualan_model->get_penjualan_by_id($id_penjualan);
+
+        if ($penjualan_detail) {
+            return $this->sendJson(array("status" => true, "data" => $penjualan_detail));
+        } else {
+            return $this->sendJson(array("status" => false, "message" => "Penjualan tidak ditemukan"));
+        }
+    }
+    public function hapus($id_penjualan)
+    {
+        if (!$this->verify_token()) {
+            return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
+        }
+
+        if ($this->Penjualan_model->delete_penjualan($id_penjualan)) {
+            return $this->sendJson(array("status" => true, "message" => "Penjualan berhasil dihapus"));
+        } else {
+            return $this->sendJson(array("status" => false, "message" => "Penjualan gagal dihapus"));
+        }
+    }
 
     private function sendJson($data)
     {

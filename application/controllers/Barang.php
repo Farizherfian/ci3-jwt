@@ -80,12 +80,16 @@ class Barang extends CI_Controller
         	return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
     	}
 
-    	$data = array(
-        	'id_supplier' => $this->input->post('id_supplier'),
-        	'id_kategori' => $this->input->post('id_kategori'),
-        	'nama' => $this->input->post('nama'),
-        	'harga' => $this->input->post('harga'),
-    	);
+    	// $data = array(
+     //    	'id_supplier' => $this->input->post('id_supplier'),
+     //    	'id_kategori' => $this->input->post('id_kategori'),
+     //    	'nama' => $this->input->post('nama'),
+     //    	'harga' => $this->input->post('harga'),
+    	// );
+        //Mendapatkan data mentah dari request PUT
+    $raw_data = $this->input->raw_input_stream;
+    //Menguraikan data mentah ke array asosiatif
+    $data = json_decode($raw_data, true);
 
 
     	$this->form_validation->set_data($data);

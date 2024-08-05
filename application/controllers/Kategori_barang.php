@@ -70,9 +70,14 @@ class Kategori_barang extends CI_Controller
         	return $this->sendJson(array("status" => false, "message" => "Invalid Token"));
     	}
 
-    	$data = array(
-        	'nama' => $this->input->post('nama')
-    	);
+    	// $data = array(
+     //    	'nama' => $this->input->post('nama')
+    	// );
+        //Mendapatkan data mentah dari request PUT
+        $raw_data = $this->input->raw_input_stream;
+        //Menguraikan data mentah ke array asosiatif
+        $data = json_decode($raw_data, true);
+
 
 
     	$this->form_validation->set_data($data);

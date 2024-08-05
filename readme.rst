@@ -80,7 +80,7 @@ POST : `http://localhost:8080/authentication/index.php/barang/tambah <http://loc
 
 **Ubah**
 
-POST : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
+PUT : `http://localhost:8080/authentication/index.php/barang/ubah:id <http://localhost:8080/authentication/index.php/barang/ubah:id>`_
 
 +--------------+------------+----------+
 | Headers      | Body       |value     |
